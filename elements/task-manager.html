@@ -1,0 +1,36 @@
+<dom-module id="task-manager">
+  <style>
+    #title{
+        width:100%;
+        height:50px;
+        background-color:lavender;
+        font-family:Arial;
+        font-size:30px;
+        padding:none;
+        margin:none;
+    }
+
+    #addcontainer{
+      padding-top: 10px;
+    }
+  </style>
+  <template>
+    <div id="title">
+      Task Manager
+    </div>
+    <div id="addcontainer">
+          <button id="btnaddtask" name="btnaddtask" on-click="actionAddTask">Add Task</button>
+          <add-task id="addtask"></add-task>
+    </div>
+  </template>
+  <script>
+      Polymer({
+          is:"task-manager",
+          actionAddTask: function (){
+            this.$.addtask.isShown = true;
+          }
+      });
+      
+  </script>
+</dom-module>
+
