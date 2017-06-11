@@ -1,18 +1,12 @@
 <dom-module id="add-task">
-    <style>
+    
+  <template>
+      <style>
        :host {
             font-family:Arial;
             font-size: 14px;
         }
 
-        form{
-            width: 300px;
-            border-radius: 2px;
-            box-shadow:lavender 0px 2px 6px, lavender 0px 0px 5px;
-            background-color:white;
-            line-height: 1.5;
-            padding: 1.5em;
-        }
         fieldset {
             border: 0;
 
@@ -32,21 +26,20 @@
         .task-recurrence{
             width:30px;
         }
-
+        
   </style>
-  <template>
       <template is="dom-if" if="{{isShown}}" restamp="true">
 
             <fieldset name="taskDetails">
                 <label for="title">Task Title:</label>
-                <input type="text" id="title">
+                <input required type="text" id="title"/>
                 
                 <label for="description">Description:</label>
-                <input type="text" id="description">
+                <input type="text" id="description"/>
             </fieldset>
             <fieldset name="recurrenceDetails">
                 <label for="recurrence">Frequency every:</label>
-                <input type="text" class="task-recurrence" maxlength="2" id="recurrence">
+                <input type="text" class="task-recurrence" maxlength="2" id="recurrence"/>
                 <select>
                     <option value="day">Day(s)</option>
                     <option value="week">Week(s)</option>
@@ -59,7 +52,7 @@
 
         </template>
     </template>
-
+</dom-module>
     <script>
         Polymer({
             is:"add-task",
@@ -71,25 +64,17 @@
                 },
             },
             createTask: function(){
-                // if (this._validateTask()){
-                    TaskManager.tasks.push({
-                        title: this.$.title.value,
-                        description: this.$.description.value,
-                        intrecurrence: this.$.recurrence.value,
-                        txtRecurrence: this.$.recurrence.value
-                    });   
-                // }
-                return false;
-            }
-            // _validateTask: function(){
-            //     if (this.$.title === ""){
-            //         alert("task title required");
-            //         return false;
-            //     }
-            //     return true;
-            // }
+                TaskManager.tasks.push({
+                    title: this.$$('#title').value,
+                    description: this.$$('#description').value,
+                    intrecurrence: this.$$('#recurrence').value,
+                    txtRecurrence: this.$$('#recurrence').value
+                    //this.$.title.value
+                });
+                this.isShown = false;
+            },
 
         });
     </script>
-</dom-module>
+
 
