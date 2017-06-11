@@ -9,7 +9,6 @@
 
         fieldset {
             border: 0;
-
         }
 
         label,
@@ -26,6 +25,11 @@
         .task-recurrence{
             width:30px;
         }
+
+        #title-error{
+            color: red;
+            display: none;
+        }
         
   </style>
       <template is="dom-if" if="{{isShown}}" restamp="true">
@@ -33,6 +37,9 @@
             <fieldset name="taskDetails">
                 <label for="title">Task Title:</label>
                 <input required type="text" id="title"/>
+                <div id="title-error">
+                    *Required
+                </div>
                 
                 <label for="description">Description:</label>
                 <input type="text" id="description"/>
@@ -64,15 +71,26 @@
                 },
             },
             createTask: function(){
-                TaskManager.tasks.push({
-                    title: this.$$('#title').value,
-                    description: this.$$('#description').value,
-                    intrecurrence: this.$$('#recurrence').value,
-                    txtRecurrence: this.$$('#recurrence').value
-                    //this.$.title.value
-                });
-                this.isShown = false;
+                if (this._validateTask()){
+                    TaskManager.tasks.push({
+                        title: this.$$('#title').value,
+                        description: this.$$('#description').value,
+                        intrecurrence: this.$$('#recurrence').value,
+                        txtRecurrence: this.$$('#recurrence').value
+                        //this.$.title.value - use this to access elements when not in a dom-if
+                    });
+                    this.isShown = false;
+                }
+                else{
+                    this.$$('#title-error').style.display = "block";
+                }
             },
+            _validateTask: function(){
+                if (this.$$('#title').value === ''){
+                    return false;
+                }
+               return true;
+            }
 
         });
     </script>
