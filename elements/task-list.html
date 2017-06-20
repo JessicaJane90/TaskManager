@@ -1,0 +1,35 @@
+<dom-module id="task-list">
+    <template>
+        <style>
+        :host {
+                font-family:Arial;
+                font-size: 14px;
+            }
+        </style>
+        <template is="dom-repeat" items = "{{tasks}}">
+            <div>Title: <span>{{item.title}}</span></div>
+            <div>Description: <span>{{item.description}}</span></div>
+            <div>Frequency every <span>{{item.intRecurrence}} {{item.txtRecurrence}}</span></div>
+        </template>
+    </template>
+</dom-module>
+    <script>
+        Polymer({
+            is:"task-list",
+            properties: {
+                tasks:{
+                    type: Array,
+                    value: [],
+                    notify: true
+                }
+            },
+            ready: function(){
+                // this.taskarray = [
+                //     {title: 'Bob', description: 'Smith', intRecurrence: '1', txtRecurrence: 'days'},
+                //      {title: 'Bob', description: 'Smith', intRecurrence: '1', txtRecurrence: 'days'}
+                // ];
+            }
+        });
+    </script>
+
+
