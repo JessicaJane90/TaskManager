@@ -55,6 +55,7 @@
             </fieldset>
             
             <button class="button" value="Add Task" on-click="createTask">Add Task </button>
+            <button class="button" value="Cancel" on-click="cancelTask">Cancel</button>
         </template>
     </template>
 </dom-module>
@@ -91,6 +92,9 @@
                 return false;
             }
             return true;
+        },
+        cancelTask: function(){
+            this.isShown = false;
         }
 
     });

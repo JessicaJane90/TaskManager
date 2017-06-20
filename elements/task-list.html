@@ -2,15 +2,58 @@
     <template>
         <style>
         :host {
-                font-family:Arial;
-                font-size: 14px;
-            }
+            font-family:Arial;
+            font-size: 14px;
+        }
+        .table {
+            display: block;
+            width: 100%;
+        }
+        .row{
+            clear: both;
+        }
+        .table-head, .row{
+            background-color: #DDD;
+            font-weight: bold;
+        }
+        .table-head, .cell{
+            border: 1px solid #999999;
+            float: left;
+            height: 17px;
+            overflow: hidden;
+            padding: 3px 1.8%;
+            width: 16%;
+        }
         </style>
-        <template is="dom-repeat" items = "{{tasks}}">
-            <div>Title: <span>{{item.title}}</span></div>
-            <div>Description: <span>{{item.description}}</span></div>
-            <div>Frequency every <span>{{item.intRecurrence}} {{item.txtRecurrence}}</span></div>
-        </template>
+        <div class="table">
+            <div class="row">
+                <div class="table-head">
+                    Title
+                </div>
+                <div class="table-head">
+                    Description
+                </div>
+                <div class="table-head">
+                    Frequency
+                </div>
+                <div class="table-head">
+                    Edit
+                </div>
+                <div class="table-head">
+                    Delete
+                </div>
+            </div>
+            <template is="dom-repeat" items = "{{tasks}}">
+                <div class="row">
+                    <div class="cell">{{item.title}}</div>
+                    <div class="cell">{{item.description}}</div>
+                    <div class="cell">{{item.intRecurrence}} {{item.txtRecurrence}}</div>
+                    <div class="cell"><button id="edittask">Edit</button></div>
+                    <div class="cell"><button id="deletetask">Delete</button></div>
+                </div>
+            </template>
+        <div/>
+        
     </template>
 </dom-module>
     <script>
