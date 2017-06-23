@@ -2,58 +2,59 @@
     <template>
         <style>
         :host {
-            font-family:Arial;
+            font-family: Arial;
             font-size: 14px;
         }
-        .table {
+        #task-list {
+            padding: 10px 10px 10px 10px;
+            margin: 10px 10px 10px 10px;
+            height: auto;
+        }
+        .task {
+            width: 400px;
+            height: auto;
+            border-width: 2px;
+            border-style: solid;
+            border-color: lavender;
+            margin: 20px;
+            position: relative;
+        }
+        .delete .delete-img{
+            height: 20px;
+            width: 20px;
+            float: right;
+            padding: 5px 5px 5px 5px;
+        }
+        
+        .title{
+            max-width: 350px;
+            padding: 5px 5px 5px 5px;
             display: block;
-            width: 100%;
+            font-size: 26px; 
         }
-        .row{
-            clear: both;
+        .description{
+            max-width: 400px;
+            padding: 5px 5px 5px 5px;
+            display: block;
         }
-        .table-head {
-            background-color:lavender;
-        }
-
-        .table-head, .cell{
-            border: 1px solid #999999;
-            float: left;
-            height: 17px;
-            overflow: hidden;
-            padding: 3px 1.8%;
-            width: 16%;
+        .recurrence{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 5px 5px 5px 5px;
+            margin-top: 20px;
         }
         </style>
-        <div class="table">
-            <div class="row">
-                <div class="table-head">
-                    Title
-                </div>
-                <div class="table-head">
-                    Description
-                </div>
-                <div class="table-head">
-                    Frequency
-                </div>
-                <div class="table-head">
-                    Edit
-                </div>
-                <div class="table-head">
-                    Delete
-                </div>
-            </div>
+        <div id="task-list">
             <template is="dom-repeat" items = "{{tasks}}">
-                <div class="row">
-                    <div class="cell">{{item.title}}</div>
-                    <div class="cell">{{item.description}}</div>
-                    <div class="cell">{{item.intRecurrence}} {{item.txtRecurrence}}</div>
-                    <div class="cell"><button id="edittask">Edit</button></div>
-                    <div class="cell"><button id="deletetask">Delete</button></div>
+                <div class="task" on-tap="editTask">
+                    <span class="delete"><img class="delete-img" src="../images/delete.jpg"></span>
+                    <span class="title">{{item.title}}</span>
+                    <span class="description">{{item.description}}</span>
+                    <span class="recurrence">Occurs every {{item.intRecurrence}} {{item.txtRecurrence}}</span>
                 </div>
-            </template>
-        <div/>
-        
+            </template>    
+        </div>
     </template>
 </dom-module>
     <script>
@@ -71,6 +72,9 @@
                 //     {title: 'Bob', description: 'Smith', intRecurrence: '1', txtRecurrence: 'days'},
                 //      {title: 'Bob', description: 'Smith', intRecurrence: '1', txtRecurrence: 'days'}
                 // ];
+            },
+            editTask: function(){
+
             }
         });
     </script>
