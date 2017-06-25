@@ -18,8 +18,11 @@
             }
 
             .button {
-                width: 100px;
-                margin: 0 auto;
+                height: 20px;
+                width: 20px;
+                padding: 5px 5px 5px 5px;
+                display: block;
+                float: right;
             }
 
             .task-recurrence{
@@ -36,7 +39,8 @@
                 box-shadow:lavender 0px 2px 6px, lavender 0px 0px 5px;
                 background-color:white;
                 line-height: 1.5;
-                padding: 1.5em;
+                padding: 2em;
+                height: auto;
             }
         
         </style>
@@ -49,14 +53,13 @@
                     <div id="title-error">
                         *Required
                     </div>
-                    
                     <label for="description">Description:</label>
                     <input type="text" id="description"/>
                 </fieldset>
                 <fieldset name="recurrenceDetails">
                     <label for="recurrence">Frequency every:</label>
-                    <input type="text" class="task-recurrence" maxlength="2" id="txtRecurrence"/>
-                    <select id="intRecurrence">
+                    <input type="text" class="task-recurrence" maxlength="2" id="intRecurrence"/>
+                    <select id="txtRecurrence">
                         <option value="day">Day(s)</option>
                         <option value="week">Week(s)</option>
                         <option value="month">Month(s)</option>
@@ -64,8 +67,8 @@
                     </select>
                 </fieldset>
                 
-                <button class="button" value="Add Task" on-click="createTask">Add Task </button>
-                <button class="button" value="Cancel" on-click="cancelTask">Cancel</button>
+                <span on-click="cancelTask"><img class="button" src="../images/delete.jpg"></span>
+                <span on-click="createTask"><img class="button" src="../images/confirm.jpg"></span>
             </div>
         </template>
   </template>
@@ -88,7 +91,7 @@
                 this.onAdd({
                     title: this.$$('#title').value,
                     description: this.$$('#description').value,
-                    intrecurrence: this.$$('#intRecurrence').value,
+                    intRecurrence: this.$$('#intRecurrence').value,
                     txtRecurrence: this.$$('#txtRecurrence').value
                     //this.$.title.value - use this to access elements when not in a dom-if
                 });
