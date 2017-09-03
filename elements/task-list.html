@@ -1,7 +1,6 @@
 <dom-module id="task-list">
     <template>
         <style>
-<<<<<<< HEAD
             :host {
                 font-family: Arial;
                 font-size: 14px;
@@ -15,83 +14,6 @@
         <div id="task-list">
             <template is="dom-repeat" items="{{tasks}}" index-as="index">
                 <task-item id="taskitem" item="{{item}}"></task-item>  
-=======
-        :host {
-            font-family: Arial;
-            font-size: 14px;
-        }
-        #task-list {
-            padding: 10px 10px 10px 10px;
-            margin: 10px 10px 10px 10px;
-            height: auto;
-        }
-        .task {
-            min-width: 400px;
-            max-width: 800px;
-            height: auto;
-            border-width: 2px;
-            border-style: solid;
-            border-color: lavender;
-            margin: 20px;
-            position: relative;
-        }
-        .delete .delete-img{
-            height: 20px;
-            width: 20px;
-            float: right;
-            padding: 5px 5px 5px 5px;
-        }
-        
-        .title{
-            max-width: 350px;
-            padding: 5px 5px 5px 5px;
-            display: block;
-            font-size: 26px; 
-        }
-        .description{
-            max-width: 400px;
-            padding: 5px 5px 5px 5px;
-            display: block;
-            position: relative;
-        }
-        .recurrence{
-            display: block;
-            padding: 5px 5px 5px 5px;
-        }
-        </style>
-        <div id="task-list">
-            <template is="dom-repeat" items = "{{tasks}}">
-                <div class="task" id="task"  on-tap="editTask">
-                    <span class="delete"><img class="delete-img" src="../images/delete.jpg"></span>
-                    <span class="title">{{item.title}}</span>
-                    <span class="description">{{item.description}}</span>
-                    <span class="recurrence">Occurs every {{item.intRecurrence}} {{item.txtRecurrence}}(s)</span>  
-                   
-                    <div hidden$="{{edithidden}}" id="edit-{{task-title}}" class="edit">
-                    <!--<div hidden="true" id="edit-{{item-title}}" class="edit">-->
-                        <fieldset name="taskDetails">
-                            <label for="title">Task Title:</label>
-                            <input required type="text" id="title" value="{{item.title}}"/>
-                            <div id="title-error">
-                                *Required
-                            </div>
-                            <label for="description">Description:</label>
-                            <input type="text" id="description" value="{{item.description}}"/>
-                        </fieldset>
-                        <fieldset name="recurrenceDetails">
-                            <label for="recurrence">Frequency every:</label>
-                            <input type="text" class="task-recurrence" maxlength="2" id="intRecurrence" value="{{item.intRecurrence}}"/>
-                            <select id="txtRecurrence" value="{{item.txtRecurrence}}">
-                                <option value="day">Day(s)</option>
-                                <option value="week">Week(s)</option>
-                                <option value="month">Month(s)</option>
-                                <option value="year">Year(s)</option>         
-                            </select>
-                        </fieldset>
-                    </div>
-                </div>
-                
->>>>>>> d5e4a19cdb9f63eaa77eb427f5128b74ce2cdc2b
             </template>    
         </div>
     </template>
@@ -105,20 +27,6 @@
                     value: [],
                     notify: true
                 },
-<<<<<<< HEAD
-=======
-                edithidden:{
-                    type: Boolean,
-                    value: true
-                }
-            },
-            editTask: function(id){
-                // var elementName = "edit-" + id;
-                // this.$.elementName.hidden = false;
-                if (this.edithidden === true){
-                    this.edithidden = !this.edithidden;
-                }
->>>>>>> d5e4a19cdb9f63eaa77eb427f5128b74ce2cdc2b
             }
             
         });
