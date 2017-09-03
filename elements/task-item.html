@@ -69,24 +69,24 @@
             <div hidden$="{{edithidden}}" id="edit" class="edit">
                 <fieldset name="taskDetails">
                     <label for="title">Task Title:</label>
-                    <input required type="text" id="title" value="{{item.title}}"/>
+                    <input required type="text" id="title" value="{{item.title::input}}"/>
                     <div id="title-error">
                         *Required
                     </div>
                     <label for="description">Description:</label>
-                    <input type="text" id="description" value="{{item.description}}"/>
+                    <input type="text" id="description" value="{{item.description::input}}"/>
                 </fieldset>
                 <fieldset name="recurrenceDetails">
                     <label for="recurrence">Frequency every:</label>
-                    <input type="text" class="task-recurrence" maxlength="2" id="intRecurrence" value="{{item.intRecurrence}}"/>
-                    <select id="txtRecurrence" value="{{item.txtRecurrence}}">
+                    <input type="text" class="task-recurrence" maxlength="2" id="intRecurrence" value="{{item.intRecurrence::input}}"/>
+                    <select id="txtRecurrence" value="{{item.txtRecurrence::input}}">
                         <option value="day">Day(s)</option>
                         <option value="week">Week(s)</option>
                         <option value="month">Month(s)</option>
                         <option value="year">Year(s)</option>     
                     </select>
                 </fieldset>
-                <span on-click="editTask"><img class="button" src="../images/delete.jpg"></span>
+                <!--<span on-click="editTask"><img class="button" src="../images/delete.jpg"></span>-->
                 <span on-click="editTaskConfirm" data-index="[[index]]"><img class="button" src="../images/confirm.jpg"></span>
             </div>
         </div>  
@@ -105,12 +105,19 @@
                 this.edithidden = !this.edithidden;
             },
             editTaskConfirm: function(e){
-               console.log(e.target);
-             }
-            //deleteTask: function(e){
+                this.edithidden = !this.edithidden;
+             },
+            deleteTask: function(index){
+
+                //not sure this is correct?!
+                //var item = this.get('tasks.#0');
+                //var index = this.tasks.indexOf(item);
+
+                //this.splice("tasks", index, 1);
+
                // this.splice('tasks', e.model.index, 1);
                 // this.fire("alert-item-removed", e.model.item);
-            //}
+            }
 
         });
     </script>
