@@ -1,58 +1,19 @@
 <dom-module id="task-list">
     <template>
         <style>
-        :host {
-            font-family: Arial;
-            font-size: 14px;
-        }
-        #task-list {
-            padding: 10px 10px 10px 10px;
-            margin: 10px 10px 10px 10px;
-            height: auto;
-        }
-        .task {
-            width: 400px;
-            height: auto;
-            border-width: 2px;
-            border-style: solid;
-            border-color: lavender;
-            margin: 20px;
-            position: relative;
-        }
-        .delete .delete-img{
-            height: 20px;
-            width: 20px;
-            float: right;
-            padding: 5px 5px 5px 5px;
-        }
-        
-        .title{
-            max-width: 350px;
-            padding: 5px 5px 5px 5px;
-            display: block;
-            font-size: 26px; 
-        }
-        .description{
-            max-width: 400px;
-            padding: 5px 5px 5px 5px;
-            display: block;
-        }
-        .recurrence{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: 5px 5px 5px 5px;
-            margin-top: 20px;
-        }
+            :host {
+                font-family: Arial;
+                font-size: 14px;
+            }
+            #task-list {
+                padding: 10px 10px 10px 10px;
+                margin: 10px 10px 10px 10px;
+                height: auto;
+            }
         </style>
         <div id="task-list">
-            <template is="dom-repeat" items = "{{tasks}}">
-                <div class="task" on-tap="editTask">
-                    <span class="delete"><img class="delete-img" src="../images/delete.jpg"></span>
-                    <span class="title">{{item.title}}</span>
-                    <span class="description">{{item.description}}</span>
-                    <span class="recurrence">Occurs every {{item.intRecurrence}} {{item.txtRecurrence}}</span>
-                </div>
+            <template is="dom-repeat" items="{{tasks}}" index-as="index">
+                <task-item id="taskitem" item="{{item}}"></task-item>  
             </template>    
         </div>
     </template>
@@ -65,16 +26,7 @@
                     type: Array,
                     value: [],
                     notify: true
-                }
-            },
-            ready: function(){
-                // this.taskarray = [
-                //     {title: 'Bob', description: 'Smith', intRecurrence: '1', txtRecurrence: 'days'},
-                //      {title: 'Bob', description: 'Smith', intRecurrence: '1', txtRecurrence: 'days'}
-                // ];
-            },
-            editTask: function(){
-
+                },
             }
         });
     </script>

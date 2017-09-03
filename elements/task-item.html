@@ -1,0 +1,118 @@
+<dom-module id="task-item">
+    <template>
+        <style>
+            :host {
+                font-family: Arial;
+                font-size: 14px;
+            }
+            .task {
+                min-width: 400px;
+                max-width: 800px;
+                height: auto;
+                border-width: 2px;
+                border-style: solid;
+                border-color: lavender;
+                margin: 20px;
+                position: relative;
+            }
+            .delete .delete-img, .edit .edit-img{
+                height: 20px;
+                width: 20px;
+                float: right;
+                padding: 5px 5px 5px 5px;
+            }
+            
+            .title{
+                max-width: 350px;
+                padding: 5px 5px 5px 5px;
+                display: block;
+                font-size: 26px; 
+            }
+            .description{
+                max-width: 400px;
+                padding: 5px 5px 5px 5px;
+                display: block;
+                position: relative;
+            }
+            .recurrence{
+                display: block;
+                padding: 5px 5px 5px 5px;
+            }
+            .button {
+                height: 20px;
+                width: 20px;
+                padding: 5px 5px 5px 5px;
+                display: block;
+                float: right;
+            }
+            #title-error{
+                color: red;
+                display: none;
+            }
+            fieldset {
+                border: 0;
+                line-height: 1.5;
+            }
+
+            label, input {
+                display: block;
+                width: 50%;
+            }
+        </style>
+        <div class="task" id="{{index}}">
+            <span class="edit" on-tap="editTask"><img class="edit-img" src="../images/edit.png"></span>
+            <span class="delete" on-tap="deleteTask"><img class="delete-img" src="../images/trash.png"></span>
+            <span class="title">{{item.title}}</span>
+            <span class="description">{{item.description}}</span>
+            <span class="recurrence">Occurs every {{item.intRecurrence}} {{item.txtRecurrence}}(s)</span>  
+            
+            <div hidden$="{{edithidden}}" id="edit" class="edit">
+                <fieldset name="taskDetails">
+                    <label for="title">Task Title:</label>
+                    <input required type="text" id="title" value="{{item.title}}"/>
+                    <div id="title-error">
+                        *Required
+                    </div>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" value="{{item.description}}"/>
+                </fieldset>
+                <fieldset name="recurrenceDetails">
+                    <label for="recurrence">Frequency every:</label>
+                    <input type="text" class="task-recurrence" maxlength="2" id="intRecurrence" value="{{item.intRecurrence}}"/>
+                    <select id="txtRecurrence" value="{{item.txtRecurrence}}">
+                        <option value="day">Day(s)</option>
+                        <option value="week">Week(s)</option>
+                        <option value="month">Month(s)</option>
+                        <option value="year">Year(s)</option>       
+                    </select>
+                </fieldset>
+                <span on-click="editTask"><img class="button" src="../images/delete.jpg"></span>
+                <span on-click="editTaskConfirm" data-index="[[index]]"><img class="button" src="../images/confirm.jpg"></span>
+            </div>
+        </div>  
+    </template>
+</dom-module>
+    <script>
+        Polymer({
+            is:"task-item",
+            properties: {
+                edithidden:{
+                    type: Boolean,
+                    value: true
+                }
+            },
+            editTask: function(){
+                this.edithidden = !this.edithidden;
+            },
+            editTaskConfirm: function(e){
+               console.log(e.target);
+             }
+            //deleteTask: function(e){
+               // this.splice('tasks', e.model.index, 1);
+                // this.fire("alert-item-removed", e.model.item);
+            //}
+
+        });
+    </script>
+
+
