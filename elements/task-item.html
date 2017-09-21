@@ -59,7 +59,7 @@
                 width: 50%;
             }
         </style>
-        <div class="task" id="{{index}}">
+        <div class="task">
             <span class="edit" on-tap="editTask"><img class="edit-img" src="../images/edit.png"></span>
             <span class="delete" on-tap="deleteTask"><img class="delete-img" src="../images/trash.png"></span>
             <span class="title">{{item.title}}</span>
@@ -99,6 +99,10 @@
                 edithidden:{
                     type: Boolean,
                     value: true
+                },
+                item:{
+                    type: Object,
+                    value:{}
                 }
             },
             editTask: function(){
@@ -107,17 +111,10 @@
             editTaskConfirm: function(e){
                 this.edithidden = !this.edithidden;
              },
-            deleteTask: function(index){
-
-                //not sure this is correct?!
-                //var item = this.get('tasks.#0');
-                //var index = this.tasks.indexOf(item);
-
-                //this.splice("tasks", index, 1);
-
-               // this.splice('tasks', e.model.index, 1);
-                // this.fire("alert-item-removed", e.model.item);
+            deleteTask: function(e){
+                this.fire('delete', this.item);
             }
+
 
         });
     </script>
