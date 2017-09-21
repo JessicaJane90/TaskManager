@@ -1,0 +1,23 @@
+{
+  "name": "taskmanager",
+  "version": "1.0.0",
+  "description": "Task Manager Package",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "json-server": "^0.12.0"
+  },
+  "scripts": {
+    "test": "test package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessicaJane90/TaskManager.git"
+  },
+  "author": "JJW",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessicaJane90/TaskManager/issues"
+  },
+  "homepage": "https://github.com/JessicaJane90/TaskManager#readme"
+}
